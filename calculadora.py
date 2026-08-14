@@ -15,15 +15,15 @@ tiempo_total = (
     +streaming
     +compras_online
     +trabajo_estudio_en_linea
-)
+    )
 
 porcentaje_dia = (tiempo_total / 24) * 100
 
 #print de resultados
 print("\n         RESUMEN DE USO DIGITAL DIARIO           ")
 print(f"\nUsuario: {username}")
-print(f"Tiempo total acumulado: {tiempo_total}")
-print(f"Porcentaje del día usado: {porcentaje_dia}%")
+print(f"Tiempo total acumulado: {tiempo_total:.2f}")
+print(f"Porcentaje del día usado: {porcentaje_dia:.2f}%")
 
 if tiempo_total > 24:
     print("\nNo puedes exceder las 24 hrs")
@@ -32,4 +32,4 @@ elif tiempo_total < 0:
     print ("\nNo puedes tener menos de 0 hrs")
 
 else:
-    print(f"\nTu tiempo total es {tiempo_total} hrs")
+    print(f"\nTu tiempo total es {tiempo_total:.2f} hrs")
