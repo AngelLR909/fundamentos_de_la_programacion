@@ -33,7 +33,7 @@ for i in range(1, num_visitantes + 1):
 
     while True:
 
-        tipo = int(input("Seleccione una opción: "))
+        tipo = int(input("Seleccione una opción (1-4): "))
 
         if tipo == 1:
             descuento = 0.12
