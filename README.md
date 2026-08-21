@@ -254,6 +254,7 @@ for y in range(1, altura + 1):
 ```python
     print()
 ```
+
 Se adjunta evidencia del código ejecutandose correctamente:
 
 ![extra4](./assets/evidencias/extra4.png)
