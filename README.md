@@ -5,17 +5,18 @@
 En esta semana se entregará evidencia de la acreditación de la certificación
 - Captura de pantalla de la bitácora de avance del curso Fundamentos de Python 1 (Python Essentials 1), mostrando el progreso completado en lecturas, ejercicios interactivos y laboratorios.
 
-![bitacora](bitacora.png)
+![bitacora](./assets/bitacora.png)
 
 - Captura de pantalla de la calificación oficial aprobatoria del examen CISCO Fundamentos de Python 1 - Examen de Sección.
 
-![calificacion](calificacion.png)
+![calificacion](./assets/calificacion.png)
 
 - Captura de pantalla de la insignia digital obtenida (junto con el nombre del estudiante).
 
-![certificado](certif.png)
+![certificado](./assets/certif.png)
 
-![insignia_digital](python-essentials-1.1.png)
+![insignia_digital](./assets/python-essentials-1.1.png)
 
 ### Ejercicios extra
 Adicional, se carga un `ipynb` con ejercicios por castigo.
+
