@@ -1,0 +1,14 @@
+Fecha de operacion: 25/09/2026
+Devolucion No.: 1
+Cajero: Angel Lopez
+Producto: Mermelada
+Monto devuelto: $34.50
+Motivo: Producto caducado
+----------------------------------------
+Fecha de operacion: 25/09/2026
+Devolucion No.: 2
+Cajero: Angel Lopez
+Producto: Jugo
+Monto devuelto: $10.00
+Motivo: Sin especificar
+----------------------------------------
