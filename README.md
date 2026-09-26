@@ -1,200 +1,260 @@
-# Actividad 1
-## Descripcion del reto
-### Calculadora de Tiempo Digital
+# Actividad 2
+## Descripción del reto
+### COBRO DE ENTRADAS DEL MUSEO
 
-Debemos realizar una calculadora que registre el tiempo diario que una persona pasa en plataformas digitales. Con los datos capturados y procesados, se deberá mostrar un resumen ordenado de los resultados.
+Desarrollar un programa en **Python** para cobrar las entradas de los visitantes que desean recorrer el **Museo de Antropología e Historia**, calculando el precio adecuado para cada visitante y aplicando descuentos por tipo de visitante bajo estrictas condiciones lógicas. El programa debe procesar a los visitantes mediante un **ciclo controlado**, aplicar los descuentos con una **tabla de verdad** que garantice un único descuento por boleto y desplegar el **total detallado** de todas las personas ingresadas.
 
-## Requerimientos
-1. Se debe solicitar nombre de usuario mediante la función `input()`.
-2. Solicitar tiempo dedicado a almenos 5 plataformas digitales.
-3. Emplear la función `float()` para poder ingresar valores decimales.
-4. Calcular la suma del tiempo total diario invertido en actividades digitales.
-5. Debemos calcular el porcentaje del día utilizado en actividades digitales con la función `porcentaje = (tiempo_total / 24) * 100`
-6. Mostrar en pantalla "Nombre de usuario", "Tiempo acumulado", "Porcentaje calculado"
+## Requerimientos técnicos obligatorios
 
-## Proceso
+1. **Captura de visitantes:** El usuario debe poder ingresar el número total de visitantes que pagarán boleto, si son mayores de edad y el tipo de visitante de cada uno.
+2. **Tabla de verdad de descuentos:** La matriz de descuentos debe estar estructurada lógicamente como una **tabla de verdad**, de modo que **solo se aplique un tipo de descuento por boleto** (adulto mayor 12%, profesor 10%, estudiante 10%).
+3. **Ciclo controlado:** Se debe implementar un ciclo controlado (`for` o `while`) para procesar a los visitantes.
+4. **`break` y `continue` obligatorios:** Dentro del ciclo es obligatorio el uso de **al menos una cláusula `break`** y **al menos una cláusula `continue`**.
+5. **Total detallado:** El programa debe desplegar el total detallado a pagar de todas las personas ingresadas, considerando sus descuentos aplicables **de forma individual**.
 
-1. Usuario ingresa los datos solicitados
+## DOCUMENTACIÓN DE CÓDIGO
 
+1. El programa solicita al usuario el número de visitantes que ingresarán (Captura la cantidad que procesará el programa), se agrega `int` para enteros.
+2. Establecemos la variable en valor 0, que acumulará nuestros totales al final.
+3. Ciclo controlado con `for` para capturar datos.
 ```python
-username = input("Por favor, ingresa tu nombre: ")
-print("\nA continuación, ingresa el tiempo en horas:")
+num_visitantes = int(input("Ingrese el número de visitantes: "))
+total_completo = 0
 
-videojuegos = float(input("Videojuegos: "))
-redes_sociales = float(input("Redes sociales (FB, IG, X, TikTok): "))
-streaming = float(input("Plataformas de Streaming(Netflix, HBOMAX, Disney+, YT, PrimeVideo, etc.): "))
-compras_online = float(input("Compras en línea (Apps como Amazon/Mercado Libre, Shein, AliExpress, etc): "))
-trabajo_estudio_en_linea = float(input("Estudio o trabajo EN LÍNEA: "))
+for i in range(1, num_visitantes + 1):
+    print(f"\n======Visitante N. {i}======")
+    edad = int(input(f"\n¿Cual es la edad del visitante {i}? "))
 ```
 
-2. Se calcula la suma de los tiempos registrados y se calcula el porcentaje del día
+4. Validamos edades ingresadas por el usuario para asignarles el precio correspondiente
 
 ```python
-tiempo_total = (
-    videojuegos
-    +redes_sociales
-    +streaming
-    +compras_online
-    +trabajo_estudio_en_linea
-)
+    if edad <= 0:
+        print("\nEdad no valida, visitante omitido")
+        continue
 
-porcentaje_dia = (tiempo_total / 24) * 100
+    if edad < 3:
+        precio = 0
+        print("\n¡Entrada gratuita!")
+        continue
+
+    elif edad <=17:
+        precio = 30
+
+    else:
+        precio = 45
 ```
 
-3. Se muestran el resumen de los resultados, considerando adicionalmente si, el resultado no pasa de las 24 hrs y si no son negativas. Se insertan las variables con f-string para el resumen y `:.2f` para mostrar dos decimales.
+5. Mostramos al usuario los tipos de visitantes, el descuento al que aplica y le solicitamos elegir uno.
+6. Aplicamos un ciclo while para la selección de un solo tipo de descuento. El usuario solo puede elegir una opción de 1-4, en caso de elegir otro valor, el programa arroja un mensaje al usuario de que su tipo de visitante no es valido y vuelve a solicitar el tipo de visitante.
+7. Usamos `break` para salir del ciclo una vez que se escoge un descuento válido.
 
 ```python
-print("\n         RESUMEN DE USO DIGITAL DIARIO           ")
-print(f"\nUsuario: {username}")
-print(f"Tiempo total acumulado: {tiempo_total:.2f}")
-print(f"Porcentaje del día usado: {porcentaje_dia:.2f}%")
+    print("\nSeleccione el tipo de visitante:")
+    print("1. Adulto mayor 12% Off")
+    print("2. Profesor 10% Off")
+    print("3. Estudiante 10% Off")
+    print("4. Ninguno (Sin descuento)\n")
 
-if tiempo_total > 24:
-    print("\nNo puedes exceder las 24 hrs")
+    while True:
 
-elif tiempo_total < 0:
-    print ("\nNo puedes tener menos de 0 hrs")
+        tipo = int(input("Seleccione una opción (1-4): "))
 
-else:
-    print(f"\nTu tiempo total es {tiempo_total:.2f} hrs")
+        if tipo == 1:
+            descuento = 0.12
+            tipo_descuento = "Adulto mayor (12%)"
+            break
+
+        elif tipo == 2:
+            descuento = 0.10
+            tipo_descuento = "Profesor (10%)"
+            break
+
+        elif tipo == 3:
+            descuento = 0.10
+            tipo_descuento = "Estudiante (10%)"
+            break
+
+        elif tipo == 4:
+            descuento = 0
+            tipo_descuento = "Sin descuento"
+            break
+
+        else:
+            print("Tipo de visitante no válido. Vuelva a intentar\n")
 ```
 
-A continuación se adjunta evidencia de la salida de ejecución del código:
-
-![Evidencia Calculadora](./assets/evidencias/calculadora_ss.png)
-
-## EXTRA 1
-### DIVISION DE CUENTA CON PROPINA
-
-El programa pide el total de la cuenta de un restaurante, porcentaje de propina y el número de personas que pagarán:
+8. Calculamos nuestro monto de descuento y el precio ya con el descuento, previamente calculado, incluido.
 
 ```python
-total = float(input("\nIngrese el total de la cuenta: "))
-propina = float(input("¿Qué porcentaje de propina te gustaría dejar?: "))
-total_personas = float(input("¿Cuántas personas pagarán?"))
+    monto_descuento = precio * descuento
+    precio_con_desc = precio - monto_descuento
 ```
 
-Después, en base a los datos capturados, asigna el valor total de la propina, cuanto pagarán con la propina incluida (calculada previamente) y la división de la cuenta total con propina.
+9. Mostramos al usuario el resumen del visitante ingresado una vez termina de ingresar sus datos.
+10. Finalizamos acumulando los precios con descuento a la variable `total_completo` y mostramos al cliente su cuenta total.
 
 ```python
-monto_propina = total * (propina / 100)
-total_con_propina = total + monto_propina
-monto_por_persona = total_con_propina / total_personas
+    print(f"\n======Resumen de visitante N.{i}======\n")
+    print(f"Edad: {edad}")
+    print(f"Precio base: ${precio}")
+    print(f"Descuento: {tipo_descuento}")
+    print(f"Monto descontado: ${monto_descuento:.2f}")
+    print(f"Total a pagar: ${precio_con_desc:.2f}")
+
+    #suma de precios
+    total_completo += precio_con_desc
+
+
+print("\n======GRACIAS POR SU COMPRA======")
+print(f"\nSu total es: ${total_completo:.2f}")
 ```
 
-Finalmente, se muestran los resultados, insertando los valores con f-string y añadiendo `:.2f` para mostrar valores con 2 decimales.
+Se adjunta evidencia de la ejecución correcta del código:
+
+![EVIDENCIA ACT2](./assets/evidencias/act2.png)
+
+## Extra 1
+
+Nuestro programa procesa visitantes con un ciclo while. Acumula los costos de los boletos y detiene el ciclo si el monto total alcanzado supera los $100.
+
+1. Declaramos variables `total` en 0 para acumular al final y variable `visitante` en 1 para mostrar número de visitante en nuestro `input`.
+2. Ciclo while para procesar visitantes, pedimos al usuario ingresar la edad para guardarla en la variable `edad` y determinamos si es menor a 3 años, su entrada es gratuita y continuamos con el siguiente visitante a procesar `continue`. Si la edad es igual a 17 o menor, se otorga costo de 30, de lo contrario se otorga costo de 45.
+3. Acumulamos en 1 a `visitante` en todos los casos para que nuestra variable muestre el número correspondiente al usuario.
 
 ```python
-print(f"\nTotal de propina: {monto_propina:.2f}")
-print(f"Cuenta total: {total_con_propina:.2f}")
-print(f"Pago por persona: {monto_por_persona:.2f}")
-print("\n           GRACIAS POR SU COMPRA           ")
+total = 0
+visitante = 1
+
+while True:
+
+    edad = int(input(f"Ingrese la edad del visitante N. {visitante}"))
+    
+    if edad < 3:
+        visitante += 1
+        print("¡Entrada gratuita!")
+        continue
+
+    elif edad <= 17:
+        visitante += 1
+        print("Menor de edad: $30 MXN")
+        costo = 30
+        
+    else:
+        visitante += 1
+        print("Mayor de edad: $45 MXN")
+        costo = 45
 ```
 
-Se adjunta evidencia de la ejecución del código:
-![EvidenciaExtra1](./assets/evidencias/extra1.png)
-
-## EXTRA 2
-### CONVERSOR DE MINUTOS A DIAS, HRS Y MINUTOS
-
-El programa pide la cantidad total de minutos
+4. Agregamos nuestro acumulador para los costos de los boletos.
+5. Si el total es mayor o igual a 100, entonces terminamos nuestro ciclo con `break` e indicamos al usuario que se alcanzó el límite.
 
 ```python
-print("         CONVERSOR MINUTOS A DÍAS, HRS Y MINUTOS            \n")
+    total += costo
 
-total_minutos = int(input("Total de minutos: "))
+    if total >= 100:
+        print(f"Se alcanzó el límite. Total final: ${total}")
+        break
 ```
 
-Definimos las equivalencias para conversión y calculamos para la conversión
-Utilizamos la división entera (//) para calcular cuántos días completos caben dentro de total_minutos
-(%) obtiene los minutos que sobran después de separar los días completos.
+Se adjunta evidencia de la correcta ejecución del código:
+
+![extra1](./assets/evidencias/extra1.png)
+
+## Extra 2
+
+Nuestro programa pide el numero total de visitantes, captura su edad, determina la cantidad de adultos y el promedio de edad.
+
+1. Pedimos al usuario la cantidad de visitantes
+2. Establecemos en 0 las variables `adulto` para determinar la cantidad de adultos posteriormente y `edades` para acumular las edades asignadas por el usuario en la variable `edad`
+3. Se le solicita al usuario la edad del visitante correspondiente y mostramos un pequeño resumen de lo capturado.
+4. Acumulamos las edades en la variable `edades` sumando las asignadas previamente.
+5. Si la edad es mayor o igual a 18, se acumula en 1 a la variable `adultos` para posteriormente mostrar la cantidad de adultos que se ingresaron.
 
 ```python
-minutosxdia = 1440
-minutosxhora = 60
+num_visitantes = int(input("Ingrese el número total de visitantes: "))
 
-dias = total_minutos // minutosxdia
+adultos = 0
+edades = 0
 
-minutos_restantes_dias = total_minutos % minutosxdia
+for i in range(1, num_visitantes + 1):
 
-horas = minutos_restantes_dias // minutosxhora
+    edad = int(input(f"Ingrese la edad del visitante {i}: "))
+    print(f"Visitante N.{i} Edad: {edad}")
 
-minutos_finales = minutos_restantes_dias % minutosxhora
+    edades += edad
+
+    if edad >= 18:
+        adultos += 1
 ```
 
-Finalmente mostramos los resultados, f-string para insertar nuestros valores
+6. Dividimos las edades entre el número de visitantes para asignar el valor a la variable `promedio`.
+7. Finalmente mostramos los resultados insertando las variables `adultos`  `promedio` y usando `f-string` para formatear a 2 decimales.
 
 ```python
-print(f"{total_minutos} minutos = {dias} día(s), {horas} hora(s), {minutos_finales} minuto(s)")
+promedio = edades / num_visitantes
+
+print("\n===== Resultados =====")
+print(f"Cantidad de adultos: {adultos:.2f}")
+print(f"Edad promedio: {promedio:.2f}")
 ```
-A continuación se muestra evidencia de la ejecución exitosa del código:
+![extra2](./assets/evidencias/extra2.png)
 
-![EvidenciaExtra2](./assets/evidencias/extra2.png)
+## Extra 3
 
-## EXTRA 3
-### CALIFICACIÓN FINAL PONDERADA
-
-Se ingresan las calificaciones obtenidas en cada parcial, se usa función float para decimales.
+Se nos presenta un código con errores. Su objetivo es calcular el precio final de un boleto de $45 con descuento de 12%.
 
 ```python
-print("         CALIFICACIÓN FINAL            \n")
-
-parcial1 = float(input("Parcial 1 (30%): "))
-parcial2 = float(input("Parcial 2 (30%): "))
-parcial3 = float(input("Parcial 3 (40%): "))
+precio = 45
+descuento = 12
+total = precio - descuento
+print(f"Total: ${total:.2f}")
 ```
+El error radica en que el descuento debe asignarse como 0.12 y asignarse primero a otra variable que asigne el resultado de la operación de, en este ejemplo, 45 * 0.12 y lo reste al total para dar el resultado correcto.
 
-Se asigna ponderación a los parciales. Multiplicamos la calificación ingresada por el usuario por la ponderación asignada y hacemos la suma de los valores.
+Procedemos a la realización y correción de la actividad.
 
+
+![extra3](./assets/evidencias/extra3.png)
+
+### Codigo corregido:
 ```python
-nota_p1 = parcial1 * 0.30
-nota_p2 = parcial2 * 0.30
-nota_p3 = parcial3 * 0.40
+precio = 45
+descuento = 0.12
+monto_descuento = precio * descuento
+total = precio - monto_descuento
 
-calificacion_final = (
-    nota_p1 
-    +nota_p2 
-    +nota_p3
-)
+print(f"Total: ${total:.2f}")
 ```
 
-Para finalizar, usamos f-string para insertar nuestro valor y `:.2f` para mostrar solo dos decimales. 
+Se adjunta evidencia de la correcta ejecución del código:
 
-```python
-print(f"Tu calificación final es: {calificacion_final:.2f}")
-```
-Se adjunta una imágen de evidencia a continuación:
-
-![EvidenciaExtra3](./assets/evidencias/extra3.png)
+![extra3_1](./assets/evidencias/extra3_1.png)
 
 ## EXTRA 4
-### CONVERSOR DE MONEDA
 
-Nuestro programa pide la cantidad de MXN que deseas convertir. Posteriormente nos solicita asignar el valor al cambio de USD y EUR respectivamente.
+Este programa crea una piramide con la altura que sea capturada por el usuario.
 
-```python
-print("         CONVERSOR DE MONEDAS            \n")
-
-mxn = float(input("Cantidad en MXN: "))
-usd = float(input("Tipo de cambio USD: "))
-eur = float(input("Tipo de cambio EUR: "))
-```
-
-Realizamos la conversión dividiendo la cantidad de MXN que vamos a convertir entre el cambio, USD o EUR respectivamente, asignados previamente. 
+1. Solicitamos altura de la pirámide con `int` para que sea número entero.
 
 ```python
-dolares = mxn / usd
-euros = mxn / eur
+altura = int(input("Ingrese la altura de la pirámide: "))
 ```
-
-Para finalizar, mostramos nuestras equivalencias, igualmente usando f-string y `:.2f` para redondear a dos decimales. 
-
+2. Este ciclo se encarga de controlar las filas de la piramide, generando los números de 1 hasta, el valor que se haya asignado en `altura`.
 ```python
-print(f"\n${mxn:.2f} MXN equivalen a:")
-print(f"USD: {dolares:.2f}")
-print(f"EUR: {euros:.2f}")
+for y in range(1, altura + 1):
+```
+3. Este ciclo anidado determina cuantós asteriscos dibujaremos en cada fila, dependiendo del valor asignado en `y`.
+4. Usamos el parametro `end=""` para evitar un salto de línea después de imprimir cada asterisco.
+```python
+    for x in range(y):
+        print("*", end="")
+```
+5. Una vez que nuestro ciclo termina de imprimir nuestros asteriscos, ahora sí nuestro `print()` hace el salto de línea.
+```python
+    print()
 ```
 
-Se adjunta evidencia de la ejecución del código:
+Se adjunta evidencia del código ejecutandose correctamente:
 
-![EvidenciaExtra4](./assets/evidencias/extra4.png)
+![extra4](./assets/evidencias/extra4.png)
