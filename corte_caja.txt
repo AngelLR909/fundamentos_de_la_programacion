@@ -1,0 +1,30 @@
+Fecha de operacion: 25/09/2026
+Cajero: Angel Lopez
+Ventas registradas: 1
+Ventas en efectivo: $542.25
+Ventas con tarjeta: $0.00
+Total vendido: $542.25
+Devoluciones: 0
+Total devuelto: $0.00
+Total neto del turno: $542.25
+----------------------------------------
+Fecha de operacion: 25/09/2026
+Cajero: Angel Lopez
+Ventas registradas: 2
+Ventas en efectivo: $542.25
+Ventas con tarjeta: $258.88
+Total vendido: $801.12
+Devoluciones: 2
+Total devuelto: $44.50
+Total neto del turno: $756.62
+----------------------------------------
+Fecha de operacion: 26/09/2026
+Cajero: Angel Lopez
+Ventas registradas: 1
+Ventas en efectivo: $633.60
+Ventas con tarjeta: $0.00
+Total vendido: $633.60
+Devoluciones: 0
+Total devuelto: $0.00
+Total neto del turno: $633.60
+----------------------------------------

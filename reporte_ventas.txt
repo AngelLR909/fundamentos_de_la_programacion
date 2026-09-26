@@ -1,0 +1,27 @@
+Fecha de operacion: 25/09/2026
+Folio de venta: 1
+Cajero: Angel Lopez
+Articulos: 8
+Subtotal: $602.50
+Descuento: $60.25
+Total: $542.25
+Metodo de pago: Efectivo
+----------------------------------------
+Fecha de operacion: 25/09/2026
+Folio de venta: 2
+Cajero: Angel Lopez
+Articulos: 10
+Subtotal: $272.50
+Descuento: $13.62
+Total: $258.88
+Metodo de pago: Tarjeta
+----------------------------------------
+Fecha de operacion: 26/09/2026
+Folio de venta: 1
+Cajero: Angel Lopez
+Articulos: 10
+Subtotal: $704.00
+Descuento: $70.40
+Total: $633.60
+Metodo de pago: Efectivo
+----------------------------------------

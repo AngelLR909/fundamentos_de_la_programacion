@@ -1,0 +1,19 @@
+Fecha de operacion: 25/09/2026
+Folio de venta: 1
+Metodo de pago: Efectivo
+Total cobrado: $542.25
+Recibido: $600.00
+Cambio: $57.75
+----------------------------------------
+Fecha de operacion: 25/09/2026
+Folio de venta: 2
+Metodo de pago: Tarjeta
+Total cobrado: $258.88
+----------------------------------------
+Fecha de operacion: 26/09/2026
+Folio de venta: 1
+Metodo de pago: Efectivo
+Total cobrado: $633.60
+Recibido: $1000.00
+Cambio: $366.40
+----------------------------------------
